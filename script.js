@@ -4,6 +4,14 @@ const data = {
     GBP: {USD: 1.35, EUR: 1.10, TL: 10.21},
     TL : {USD: 0.13, EUR: 0.11, GBP: 0.098}
   };
+  function myFunction(text) {
+    var x = document.getElementById("snackbar");
+  
+    x.className = "show";
+    x.innerHTML = text;
+  
+    setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
+  };
   
   const currencyKeys = Object.keys(data);
   
@@ -55,23 +63,26 @@ const data = {
 
     const currencyResult = document.querySelector("#currency-result");
     if (fromTarget == toTarget) {
-      currencyResult.innerHTML = "FARKLI DEGERLER SECMELISINIZ!";
+      message = "FARKLI DEGERLER SECMELISINIZ!";
+      myFunction(message);
 
     }else if (isNaN(amount)){
-      currencyResult.innerHTML = "DEGERI BIR SAYI OLARAK VERMELISINIZ!";
+      message1 = "DEGERI BIR SAYI OLARAK VERMELISINIZ!";
+      myFunction(message1);
     }else {
       currencyResult.innerHTML = amount + " " + fromTarget + " = " + result + " " + toTarget;
     }
   
-    
    }else if (document.querySelector("input[name='currency_from']:checked")){    
-    currencyResult.innerHTML = "DONUSTURMEK ISTEDIGINIZ DEGERI GIRINIZ!";
+    message2 = "DONUSTURMEK ISTEDIGINIZ DEGERI GIRINIZ!";
+    myFunction(message2);
 
    }else if (document.querySelector("input[name='currency_to']:checked")) {
-    currencyResult.innerHTML = "DONUSTURULECEK DEGER GIRINIZ!";
+    message3 = "DONUSTURULECEK DEGER GIRINIZ!";
+    myFunction(message3);
 
    }else {
-    currencyResult.innerHTML = "HICBIR SECIM YAPMADINIZ SECIM YAPINIZ!";
+    message4 = 'HICBIR DEGER GIRILMEDI';
+    myFunction(message4);
    }
-
   });
